@@ -80,7 +80,6 @@ class F1 {
         this.image = Bas;
       }
       image(this.image, this.x, this.y, this.tailleX, this.tailleY);
-      
     }
   }
 
@@ -122,6 +121,9 @@ class F1 {
   }
 }
 
+
+let musique;
+
 let fond;
 
 let calque;
@@ -131,8 +133,6 @@ let pilote;
 let element;
 
 let animation;
-
-let son;
 
 function preload() {
   Haut = loadImage("f1Haut.png");
@@ -148,6 +148,7 @@ function preload() {
   rouge = loadImage("soft.png");
   jaune = loadImage("medium.png");
   blanc = loadImage("hard.png");
+  musique = loadSound("intro.mp3")
 }
 
 function setup() {
@@ -180,8 +181,6 @@ function setup() {
   imageMode(CENTER);
   fond.resize(600, 850);
   calque.resize(600, 850);
-  
-    
 }
 
 function draw() {
@@ -201,9 +200,15 @@ function draw() {
     groupementB[i].dessiner();
     groupementB[i].voler();
   }
-  
+
   image(calque, 300, 425);
 
   pilote.dessiner();
   pilote.conduire();
+  
+  musique.playMode('untilDone');
+  musique.amp(0.2);
+  musique.play();
+  
+  
 }
